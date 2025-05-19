@@ -56,4 +56,8 @@ public class Drive extends SubsystemBase {
         setLeft(leftSpeed);
         setRight(rightSpeed);
     }
+    public void stop() {
+        setLeft(0);
+        setRight(0);
+    }
 }
