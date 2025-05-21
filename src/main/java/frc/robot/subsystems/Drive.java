@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -33,12 +34,23 @@ public class Drive extends SubsystemBase {
         r1.configAllSettings(config);
         r2.configAllSettings(config);
         r3.configAllSettings(config);
+        
+        // set the brake mode for all TalonSRXs
+        l1.setNeutralMode(NeutralMode.Brake);
+        l2.setNeutralMode(NeutralMode.Brake);
+        l3.setNeutralMode(NeutralMode.Brake);
+        r1.setNeutralMode(NeutralMode.Brake);
+        r2.setNeutralMode(NeutralMode.Brake);
+        r3.setNeutralMode(NeutralMode.Brake);
 
+        // Set the TalonSRXs to follow the master TalonSRX
         l1.setInverted(true);
         l2.follow(l1);
         l3.follow(l1);
         r2.follow(r1);
         r3.follow(r1);
+
+        
     }
 
     @Override
